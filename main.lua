@@ -128,50 +128,30 @@ local Window = Library:CreateWindow({
     Center = true,
     AutoShow = true,
     TabWidth = 160,
-    Footer = "Premium Dashboard"
+    Footer = "MKF Premium 👑"
 })
 
-local MainTab = Window:AddTab("Home", "home")
-local FarmTab = Window:AddTab("Farming", "leaf")
-local InvTab = Window:AddTab("Inventory", "box")
-local SettingsTab = Window:AddTab("Settings", "settings")
+local Options = Library.Options
+local Toggles = Library.Toggles
+local MainTab = Window:AddTab("MKF Premium", "box")
 
--- HOME (clean landing page)
-local HomeBox = MainTab:AddLeftGroupbox("Status")
-HomeBox:AddLabel("Welcome to MKF Premium")
-HomeBox:AddLabel("Status: Online")
-
--- FARMING (clean and structured)
-local FarmBox = FarmTab:AddLeftGroupbox("Auto Farming")
+local FarmBox = MainTab:AddLeftGroupbox("Economy & Farming")
+local ChestBox = MainTab:AddRightGroupbox("Chest Management")
+local PlotBox = MainTab:AddLeftGroupbox("Plot Control")
 
 FarmBox:AddDropdown("TargetCases", {
-    Text = "Select Cases",
+    Text = "Rarities to Auto Buy",
+    Default = 1,
     Values = caseRarirites,
     Multi = true,
 })
 
-FarmBox:AddToggle("AutoBuy", {
-    Text = "Auto Buy Cases",
-    Default = false
+FarmBox:AddDropdown("TargetMutations", {
+    Text = "Target Mutations (Optional)",
+    Values = mutationList,
+    Multi = true,
 })
 
--- INVENTORY
-local InvBox = InvTab:AddLeftGroupbox("Inventory Tools")
-
-InvBox:AddToggle("AutoSell", {
-    Text = "Auto Sell Items",
-    Default = false
-})
-
--- SETTINGS
-local SetBox = SettingsTab:AddLeftGroupbox("Settings")
-
-SetBox:AddButton({
-    Text = "Rejoin",
-    Func = function()
-        game:GetService("TeleportService"):Teleport(game.PlaceId)
-    end
-})
 local isBuying = false
 FarmBox:AddToggle("AutoRollSnipe", { Text = "Auto Roll & Buy Targets", Default = false })
 
