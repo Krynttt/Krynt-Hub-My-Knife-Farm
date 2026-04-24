@@ -121,7 +121,8 @@ local function fireFarPrompt(prompt)
 end
 
 local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bigbeanscripts/Fluent/refs/heads/main/UI"))()
+local Library = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/bigbeanscripts/Fluent/refs/heads/main/InterfaceManager.luau"))()
+
 local Window = Library:CreateWindow({
     Title = "MKF Premium",
     Center = true,
